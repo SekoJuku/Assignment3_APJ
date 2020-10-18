@@ -62,7 +62,6 @@
 
 <div class = "wrapper">
     <c:set var="sum" scope = "session" value = "0"/>
-    <:c:if>
     <c:forEach var = "item" items = "$(items)" begin = "1" end = "5">
     <c:out value = "${i}"/><p>
     <div class = "article">
@@ -71,12 +70,11 @@
             <p><c:out value = "${item.getCategory()}"/></p>
             <p><c:out value = "${item.getDescription()}"/></p>
             <p><c:out value = "${item.getPrice()}"/></p>
-            <c:set var="sum" value="${sum}+1"
+            <c:set var="sum" value="${sum+1}"/>
         </div>
     </div>
     </c:forEach>
-    </:c:if>
-    <h4>Total to pay: <%=sum%></h4>
+    <h4>Total to pay: <c:out value="${sum}"/> </h4>
     <form action="end.jsp" method="get">
         <button>Pay!</button>
     </form>
