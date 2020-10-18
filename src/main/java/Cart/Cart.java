@@ -1,3 +1,5 @@
+package Cart;
+
 import Item.Item;
 
 import java.util.PriorityQueue;
@@ -16,12 +18,6 @@ public class Cart {
 
     public static void deleteAll() {
         q.clear();
-        if(!q.isEmpty()) {
-            for (Item item :
-                    q) {
-                q.remove(item);
-            }
-        }
     }
 
 

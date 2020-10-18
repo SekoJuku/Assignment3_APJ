@@ -1,24 +1,12 @@
-<%@ page import="java.util.Set" %>
 <%@ page import="Item.Item" %>
-<%@ page import="Item.ItemSet" %>
-<%@ page import="java.util.HashSet" %>
-<%@ page import="java.util.Collections" %>
+<%@ page import="Cart.Cart" %>
+<%@ page import="User.User" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Main Menu</title>
+    <title>End</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <style>
-        .wrapper {
-            margin : 20px 30px;
-            padding : 10px;
-
-        }
-        .article {
-            padding : 5px;
-            border : 1px lightslategray;
-        }
-    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -56,32 +44,29 @@
     </div>
 </nav>
 
-
-<div class = "wrapper">
-    <form action="s6">
+<%
+    if(Cart.getItems()  != null)
+    for (Item item :
+            Cart.getItems()) { %>
+    <div class = "article">
+        <div>
+            <h4><%=item.getName()%></h4>
+            <p><%=item.getCategory()%></p>
+            <p><%=item.getDescription()%></p>
+            <p><%=item.getPrice()%></p>
+        </div>
+    </div>
+<%
+    }
+%>
+    User info:
     <%
-        if(request.getAttribute("error") != null) {
-            System.out.println("Error!");
-        }
-        if(ItemSet.getItems() != null) {
-            for (Item item : ItemSet.getItems() ) {%>
-            <div class = "article">
-                <div>
-                    <h4><%=item.getName()%></h4>
-                    <p><%=item.getCategory()%></p>
-                    <p><%=item.getDescription()%></p>
-                    <p><%=item.getPrice()%></p>
-                </div>
-                <div>
-                        <input type="checkbox" value="<%=item.getName()%>" name = "itemname"> Add to cart
-                </div>
-            </div>
-    <%
-            }
-        }
+        User a = (User) session.getAttribute("user");
     %>
-    <input type="submit" value = "Add">
-    </form>
-</div>
+    Username : <%=a.getUsername()%><br>
+    Session start : <%=session.getAttribute("start")%><br>
+    Name : <%=a.getName()%><br>
+    Visits : <%=a.getVisits()%><br>
+    Last time : <%=a.getDateTime(a.getLasttime())%><br>
 </body>
 </html>

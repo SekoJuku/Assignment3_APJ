@@ -1,3 +1,5 @@
+package User;
+
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,6 +22,10 @@ public class User {
         setName(name);
         setUsername(username);
         setUserpass(userpass);
+    }
+
+    public void addVisit() {
+        visits++;
     }
 
 

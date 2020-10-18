@@ -220,9 +220,11 @@
 </head>
 <form action="s1" method="post">
     <div class="wrapper fadeInDown">
+
         <%-- Login Form--%>
         <div id="formContent">
             <form>
+                <h2>Login</h2>
                 <input type="text" id="username" class="fadeIn second" name="username" placeholder="Username">
                 <input type="password" id="password" class="fadeIn third" name="userpass" placeholder="Password">
                 <input type="submit" class="fadeIn fourth" value="Login">

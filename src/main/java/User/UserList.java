@@ -1,3 +1,7 @@
+package User;
+
+import User.User;
+
 import java.util.LinkedList;
 
 public class UserList {

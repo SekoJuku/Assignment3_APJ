@@ -11,5 +11,4 @@
         <param-name>init</param-name>
         <param-value>IDE</param-value>
     </context-param>
-
 </web-app>

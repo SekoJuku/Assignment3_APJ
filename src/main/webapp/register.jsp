@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Арман
+  User.User: Арман
   Date: 15.10.2020
   Time: 20:13
   To change this template use File | Settings | File Templates.
@@ -233,6 +233,7 @@
     <div class="wrapper fadeInDown">
         <%-- Register Form--%>
         <div id="formContent">
+            <h2>Register</h2>
             <input type="text" id="name" class="fadeIn second" name="name" placeholder="Name">
             <input type="text" id="username" class="fadeIn third" name="username" placeholder="Username">
             <input type="password" id="password" class="fadeIn fourth" name="userpass" placeholder="Password">

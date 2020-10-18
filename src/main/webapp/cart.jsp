@@ -1,12 +1,16 @@
-<%@ page import="java.util.Set" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <%@ page import="Item.Item" %>
-<%@ page import="Item.ItemSet" %>
-<%@ page import="java.util.HashSet" %>
-<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.Queue" %><%--
+  Created by IntelliJ IDEA.
+  User.User: Арман
+  Date: 18.10.2020
+  Time: 15:34
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Main Menu</title>
+    <title>Cart</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <style>
         .wrapper {
@@ -56,31 +60,25 @@
     </div>
 </nav>
 
-
 <div class = "wrapper">
-    <form action="s6">
-    <%
-        if(request.getAttribute("error") != null) {
-            System.out.println("Error!");
-        }
-        if(ItemSet.getItems() != null) {
-            for (Item item : ItemSet.getItems() ) {%>
-            <div class = "article">
-                <div>
-                    <h4><%=item.getName()%></h4>
-                    <p><%=item.getCategory()%></p>
-                    <p><%=item.getDescription()%></p>
-                    <p><%=item.getPrice()%></p>
-                </div>
-                <div>
-                        <input type="checkbox" value="<%=item.getName()%>" name = "itemname"> Add to cart
-                </div>
-            </div>
-    <%
-            }
-        }
-    %>
-    <input type="submit" value = "Add">
+    <c:set var="sum" scope = "session" value = "0"/>
+    <:c:if>
+    <c:forEach var = "item" items = "$(items)" begin = "1" end = "5">
+    <c:out value = "${i}"/><p>
+    <div class = "article">
+        <div>
+            <h4><c:out value = "${item.getName()}"/></h4>
+            <p><c:out value = "${item.getCategory()}"/></p>
+            <p><c:out value = "${item.getDescription()}"/></p>
+            <p><c:out value = "${item.getPrice()}"/></p>
+            <c:set var="sum" value="${sum}+1"
+        </div>
+    </div>
+    </c:forEach>
+    </:c:if>
+    <h4>Total to pay: <%=sum%></h4>
+    <form action="end.jsp" method="get">
+        <button>Pay!</button>
     </form>
 </div>
 </body>
